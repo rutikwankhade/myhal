@@ -15,6 +15,9 @@ import {
 
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
+import Welcome from './pages/Welcome'
+import Profile from './pages/Profile'
+
 
 // Retrieve Clerk settings from the environment
 const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
@@ -22,59 +25,42 @@ const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 function App() {
   return (
     <div>
+      <ClerkProvider frontendApi={clerkFrontendApi}>
+        <SignedIn>
+          <Navbar />
+
+        </SignedIn>
 
       <Router>
-        <ClerkProvider frontendApi={clerkFrontendApi}>
 
           <Switch>
             {/* Public routes, accesible whether or not a user is signed in */}
-            <Route path="/public">
-              <div>
-                Reached the public route. <Link to="/">Return home.</Link>
-              </div>
-            </Route>
+            <Route exact path="/" component={Welcome} />
+       
 
-            {/* Private routes, accesible only if a user is signed in */}
-            <PrivateRoute path="/private">
-              <div>
-                Reached the private route. <Link to="/">Return home.</Link>
-              </div>
+            <PrivateRoute path="/profile" Comp={Profile}>
+
             </PrivateRoute>
 
             {/* Catch-all route will render if no other route renders */}
             <Route>
               <SignedIn>
-                <Navbar />
 
-                <div>You are signed in. You can access both routes.</div>
-                <Navigation />
               </SignedIn>
               <SignedOut>
                 <div>You are signed out. You can access the public route.</div>
-                <Navigation />
               </SignedOut>
             </Route>
           </Switch>
+                </Router>
+
         </ClerkProvider>
-      </Router>
     </div>
 
   );
 }
 
 
-function Navigation() {
-  return (
-    <ul>
-      <li>
-        <Link to="/public">Public route</Link>
-      </li>
-      <li>
-        <Link to="/private">Private route</Link>
-      </li>
-    </ul>
-  );
-}
 
 
 

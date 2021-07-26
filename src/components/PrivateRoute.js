@@ -9,11 +9,11 @@ import { Route } from 'react-router-dom'
 
 // If the route matches but the user is not signed in, redirect to /sign-in
 
-const PrivateRoute = (props) => {
+const PrivateRoute = ({path, Comp}) => {
     return (
         <>
             <SignedIn>
-                <Route {...props} />
+                <Route exact path={path} component={Comp} />
             </SignedIn>
             <SignedOut>
                 <RedirectToSignIn />
