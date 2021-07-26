@@ -13,13 +13,18 @@ import {
   Switch 
 } from 'react-router-dom';
 
+import Navbar from './components/Navbar'
+
 // Retrieve Clerk settings from the environment
 const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
 function App() {
   return (
+    <div>
+
     <Router>
-      <ClerkProvider frontendApi={clerkFrontendApi}>
+        <ClerkProvider frontendApi={clerkFrontendApi}>
+
         <Switch>
           {/* Public routes, accesible whether or not a user is signed in */}
           <Route path="/public">
@@ -37,7 +42,9 @@ function App() {
 
           {/* Catch-all route will render if no other route renders */}
           <Route>
-            <SignedIn>
+              <SignedIn>
+                                <Navbar/>
+
               <UserButton />
               <Greeting />
               <div>You are signed in. You can access both routes.</div>
@@ -50,7 +57,9 @@ function App() {
           </Route>
         </Switch>
       </ClerkProvider>
-    </Router>
+      </Router>
+          </div>
+
   );
 }
 
