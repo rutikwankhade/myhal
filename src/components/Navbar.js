@@ -4,7 +4,7 @@ const Navbar = () => {
       const { firstName } = useUser();
 
     return (
-        <div className="p-4 md:px-40 flex bg-gray-50">
+        <div className="p-4 md:px-40 flex bg-white border-b-2 border-gray-600">
             <h1 className="text-2xl mr-auto ml-2 italic font-mono font-bold ">Myhal</h1>
             
             <SignedIn>
