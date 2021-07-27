@@ -1,3 +1,4 @@
+import React,{useEffect} from 'react';
 import {
   ClerkProvider,
   RedirectToSignIn,
@@ -13,32 +14,49 @@ import {
   Switch
 } from 'react-router-dom';
 
+import firebase from 'firebase/app';
+import {config} from './firebase'
+
+
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
 import Welcome from './pages/Welcome'
 import Profile from './pages/Profile'
+import Dashboard from './pages/Dashboard'
 
+
+
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+} else {
+  firebase.app();
+}
 
 // Retrieve Clerk settings from the environment
 const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
+
 function App() {
+
+  
+
   return (
     <div>
+
       <ClerkProvider frontendApi={clerkFrontendApi}>
         <SignedIn>
           <Navbar />
-
         </SignedIn>
 
-      <Router>
-
+        <Router>
           <Switch>
-            {/* Public routes, accesible whether or not a user is signed in */}
             <Route exact path="/" component={Welcome} />
-       
+            <Route exact path="/profile/:username" component={Profile} />
 
-            <PrivateRoute path="/profile" Comp={Profile}>
+
+
+            <PrivateRoute path="/dashboard" Comp={Dashboard}>
 
             </PrivateRoute>
 
@@ -52,7 +70,7 @@ function App() {
               </SignedOut>
             </Route>
           </Switch>
-                </Router>
+        </Router>
 
         </ClerkProvider>
     </div>
