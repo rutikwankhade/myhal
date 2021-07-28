@@ -22,7 +22,7 @@ import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 
-// import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 // Retrieve Clerk settings from the environment
@@ -30,29 +30,32 @@ const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
 const App = () => {
 
-  console.log(config)
-      // const userRef = db.collection(`users/${currentUser.uid}/info`)
+  // console.log(config)
 
 
   useEffect(() => {
-    console.log(window.Clerk)
-
     if (window.Clerk?.user) {
-      db.collection(`data/users/${window.Clerk.user.primaryEmailAddress.emailAddress}/info`)
-        .doc(`${window.Clerk.user.primaryEmailAddress.emailAddress}`)
-        .set(
+     
+
+      db.collection(`users/${window.Clerk.user.primaryEmailAddress.emailAddress}/info`).add(
           {
             email: window.Clerk.user.primaryEmailAddress.emailAddress,
             name: window.Clerk.user.fullName,
-            lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
             photoURL: window.Clerk.user.profileImageUrl,
             userName: window.Clerk.user.username,
           },
           { merge: true }
-        );
+      )
+      .then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+});
     }
 
   });
+  
 
   return (
     <div>
@@ -66,7 +69,7 @@ const App = () => {
             <Route exact path="/" component={Welcome} />
             <Route exact path="/profile/:username" component={Profile} />
             <Route exact path="/signin" component={Signin} />
-                        <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signup" component={Signup} />
 
 
             <PrivateRoute path="/dashboard" Comp={Dashboard}>
