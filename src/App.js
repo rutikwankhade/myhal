@@ -21,6 +21,8 @@ import Welcome from './pages/Welcome'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
+import Signup from './pages/Signup'
+
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
@@ -30,12 +32,15 @@ const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 const App = () => {
 
   console.log(config)
+      // const userRef = db.collection(`users/${currentUser.uid}/info`)
+
 
   useEffect(() => {
     console.log(window.Clerk)
+
     if (window.Clerk?.user) {
-      db.collection("users")
-        .doc(window.Clerk.user.primaryEmailAddress.emailAddress)
+      db.collection(`data/users/${window.Clerk.user.primaryEmailAddress.emailAddress}/info`)
+        .doc(`${window.Clerk.user.primaryEmailAddress.emailAddress}`)
         .set(
           {
             email: window.Clerk.user.primaryEmailAddress.emailAddress,
@@ -47,9 +52,6 @@ const App = () => {
           { merge: true }
         );
     }
-
-
-
 
   });
 
@@ -65,6 +67,8 @@ const App = () => {
             <Route exact path="/" component={Welcome} />
             <Route exact path="/profile/:username" component={Profile} />
             <Route exact path="/signin" component={Signin} />
+                        <Route exact path="/signup" component={Signup} />
+
 
             <PrivateRoute path="/dashboard" Comp={Dashboard}>
 

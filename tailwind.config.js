@@ -5,5 +5,6 @@ module.exports = {
        extend: {}
      },
      variants: {},
-     plugins: []
+       plugins: [require('tailwindcss-font-inter')]
+
    }

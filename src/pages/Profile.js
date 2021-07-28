@@ -1,8 +1,15 @@
 import React from 'react';
 import EventCard from '../components/EventCard';
+import {db} from '../config/firebase'
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 const Profile = () => {
+
+     const userRef = db.collection(`users/tabwaveapp@gmail.com/info`)
+    const data = useCollectionData(userRef);
+    console.log(data)
+
 
     return (
         <div className="bg-purple-300  p-10 flex flex-row">
