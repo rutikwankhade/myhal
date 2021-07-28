@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react';
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -8,12 +8,16 @@ const Dashboard = () => {
 
     const { firstName, lastName } = useUser();
     let username = (firstName + lastName).toLowerCase()
-    
-    const [bio, setBio] = useState('')
-    
 
-    useEffect(() => 
-    {
+    const [bio, setBio] = useState('')
+    const [lightType, setLightType] = useState('')
+    const [title, setTitle] = useState('')
+    const [details, setDetails] = useState('')
+
+
+
+
+    useEffect(() => {
         console.log(bio)
     })
 
@@ -21,36 +25,40 @@ const Dashboard = () => {
     const updateBio = () => {
         console.log(bio)
         db.collection(`users/data/${username}`).doc('info').update({
-            about:bio
+            about: bio
         })
-        .then(() => {
-    console.log("Document successfully updated!");
-})
-.catch((error) => {
-    // The document probably doesn't exist.
-    console.error("Error updating document: ", error);
-});
-                  
+            .then(() => {
+                console.log("Document successfully updated!");
+            })
+            .catch((error) => {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
 
+    }
+
+
+    const addToProfile = () => {
+        console.log(title, details)
 
         
     }
 
 
     return (
-        <div className="p-10">
+        <div className="p-10 flex flex-row justify-center">
 
 
 
             <div className=" rounded-lg p-4 pr-8 md:w-1/3">
                 <Link to={`/profile/${username}`}>
-                    <h1 className="rounded-lg border-2 p-2 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white">Visit My Page</h1>
+                    <h1 className="rounded-lg border-2 p-2 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</h1>
                 </Link>
 
                 <textarea
                     className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
-                    placeholder="A short bio"
-                    onChange={(e)=>setBio(e.target.value)}
+                    placeholder="Tell a little about yourself!"
+                    onChange={(e) => setBio(e.target.value)}
                 />
                 <button
                     onClick={updateBio}
@@ -61,6 +69,27 @@ const Dashboard = () => {
 
 
 
+            </div>
+
+            <div className="w-1/2 bg-white flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 mx-20">
+
+                <input
+                    className="w-full p-2 text-xl border-2 m-1  rounded-lg bg-gray-50 px-4"
+                    placeholder="// Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <textarea
+                    className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
+                    placeholder="// Write more about it."
+                    onChange={(e) => setDetails(e.target.value)}
+                />
+
+                <button
+                    onClick={addToProfile}
+                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded text-white w-auto mx-auto px-6 text-center"
+                >
+                    Add to my profile
+                </button>
             </div>
         </div>
     );

@@ -23,7 +23,7 @@ const Profile = () => {
 
         }
 
-console.log()
+        console.log()
 
 
     }, [data])
@@ -35,11 +35,11 @@ console.log()
                 <div className=" h-auto bg-white text-center border-2 border-gray-600  rounded-xl p-10 flex flex-col  items-center">
                     <img src={user?.photoURL} alt="me" className="w-20 h-20 rounded-full" />
                     <h1 className="text-2xl font-bold py-2">{user?.name || user?.userName}</h1>
-                    <p className="text-gray-600 text-xl py-2">{ user?.about}</p>
+                    <p className="text-gray-600 text-xl py-2">{user?.about}</p>
                 </div>
 
-               
-               
+
+
                 <div className="flex flex-row justify-center mt-2">
                     <div className="w-1/2 h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">Highlights</div>
                     <div className="w-1/2 h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">Lowlights</div>
