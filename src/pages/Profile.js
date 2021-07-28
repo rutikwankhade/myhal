@@ -1,16 +1,16 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
-import {db} from '../config/firebase'
+import { db } from '../config/firebase'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 const Profile = () => {
 
     const userRef = db.collection(`users/rutikwankhade2@gmail.com/info`)
-         const data = useCollectionData(userRef);
+    const data = useCollectionData(userRef);
 
-    
-    const [user, setUser]= useState({})
+
+    const [user, setUser] = useState({})
 
 
     useEffect(() => {
@@ -19,18 +19,32 @@ const Profile = () => {
 
         }
 
-       
 
-        
-    },[data])
+
+
+    }, [data])
 
 
     return (
         <div className="bg-purple-300  p-10 flex flex-row">
-            <div className="sticky top-20 bg-white text-center border-2 border-gray-600 w-1/4 rounded-xl p-10 flex flex-col h-full items-center">
-                <img src={user?.photoURL} alt="me" className="w-20 h-20 rounded-full" />
-                <h1 className="text-2xl font-bold py-2">{user?.name}</h1>
-                <p className="text-gray-600 text-xl py-2">Avid learner, loves building products, reads a lot</p>
+            <div className="sticky top-20 h-auto w-1/4 flex flex-col">
+                <div className=" h-auto bg-white text-center border-2 border-gray-600  rounded-xl p-10 flex flex-col  items-center">
+                    <img src={user?.photoURL} alt="me" className="w-20 h-20 rounded-full" />
+                    <h1 className="text-2xl font-bold py-2">{user?.name}</h1>
+                    <p className="text-gray-600 text-xl py-2">Avid learner, loves building products, reads a lot</p>
+                </div>
+
+               
+               
+                <div className="flex flex-row justify-center mt-2">
+                    <div className="w-1/2 h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">Highlights</div>
+                    <div className="w-1/2 h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">Lowlights</div>
+
+                </div>
+
+
+
+
             </div>
 
             <div className="bg-white rounded-xl w-8/12 mx-6 p-10 border-2 border-gray-600   ">
