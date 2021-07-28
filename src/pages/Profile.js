@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
 import { db } from '../config/firebase'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useParams } from 'react-router';
 
 
 const Profile = () => {
+    const { username } = useParams()
 
-    const userRef = db.collection(`users/rutikwankhade2@gmail.com/info`)
+
+    const userRef = db.collection(`users/${username}/info`)
     const data = useCollectionData(userRef);
 
 
@@ -19,7 +22,7 @@ const Profile = () => {
 
         }
 
-
+console.log()
 
 
     }, [data])

@@ -35,27 +35,30 @@ const App = () => {
 
   useEffect(() => {
     if (window.Clerk?.user) {
-     
 
-      db.collection(`users/${window.Clerk.user.primaryEmailAddress.emailAddress}/info`).add(
-          {
-            email: window.Clerk.user.primaryEmailAddress.emailAddress,
-            name: window.Clerk.user.fullName,
-            photoURL: window.Clerk.user.profileImageUrl,
-            userName: window.Clerk.user.username,
-          },
-          { merge: true }
+      console.log(window.Clerk.user)
+      let fullname = window.Clerk.user.firstName + window.Clerk.user.lastName
+      let username=fullname.toLowerCase();
+
+      db.collection(`users/${username}/info`).add(
+        {
+          email: window.Clerk.user.primaryEmailAddress.emailAddress,
+          name: window.Clerk.user.fullName,
+          photoURL: window.Clerk.user.profileImageUrl,
+          userName: username,
+        },
+        { merge: true }
       )
-      .then(() => {
-    console.log("Document successfully written!");
-})
-.catch((error) => {
-    console.error("Error writing document: ", error);
-});
+        .then(() => {
+          console.log("Document successfully written!");
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
     }
 
-  });
-  
+  }, );
+
 
   return (
     <div>

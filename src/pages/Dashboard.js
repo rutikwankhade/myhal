@@ -10,7 +10,8 @@ const Dashboard = () => {
    
 
 
-    const { firstName } = useUser();
+    const { firstName, lastName } = useUser();
+    let username= (firstName + lastName).toLowerCase()
 
     return (
         <div className="p-10">
@@ -18,7 +19,7 @@ const Dashboard = () => {
 
 
             <div className=" rounded-lg p-4 pr-8 w-1/3">
-                <Link to={`/profile/${firstName}`}>
+                <Link to={`/profile/${username}`}>
                     <h1 className="rounded-lg border-2 p-2 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white">Visit My Page</h1>
                 </Link>
 
