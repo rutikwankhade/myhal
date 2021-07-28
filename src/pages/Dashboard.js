@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react';
-// import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../config/firebase'
+import firebase from 'firebase'
 
 const Dashboard = () => {
 
@@ -10,15 +11,22 @@ const Dashboard = () => {
     let username = (firstName + lastName).toLowerCase()
 
     const [bio, setBio] = useState('')
-    const [lightType, setLightType] = useState('')
+    const [lightType, setLightType] = useState('Highlights')
     const [title, setTitle] = useState('')
     const [details, setDetails] = useState('')
 
 
 
+    const highlightsRef = db.collection(`users/data/${username}`)
+    const data = useCollectionData(highlightsRef);
+
+
 
     useEffect(() => {
         console.log(bio)
+        console.log(data)
+
+
     })
 
 
@@ -38,9 +46,41 @@ const Dashboard = () => {
     }
 
 
+
     const addToProfile = () => {
         console.log(title, details, lightType)
 
+        if (lightType === 'Highlights') {
+
+            db.collection(`users/data/${username}`).doc('info').update({
+                highlights: firebase.firestore.FieldValue.arrayUnion({
+                    title: title,
+                    details: details
+                })
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+
+
+        } else if (lightType === 'Lowlights') {
+
+            db.collection(`users/data/${username}`).doc('info').update({
+                lowlights: firebase.firestore.FieldValue.arrayUnion({
+                    title: title,
+                    details: details
+                })
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+        }
 
     }
 

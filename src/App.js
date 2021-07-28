@@ -46,6 +46,8 @@ const App = () => {
           name: window.Clerk.user.fullName,
           photoURL: window.Clerk.user.profileImageUrl,
           userName: username,
+          highlights: [],
+          lowlights:[],
         },
         { merge: true }
       )
@@ -57,7 +59,7 @@ const App = () => {
         });
     }
 
-  },);
+  });
 
 
   return (
