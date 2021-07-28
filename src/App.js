@@ -11,8 +11,8 @@ import {
   Switch
 } from 'react-router-dom';
 
-import { db, config } from "./config/firebase";
-import firebase from "firebase";
+import { db } from "./config/firebase";
+// import firebase from "firebase";
 
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
@@ -22,7 +22,7 @@ import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 // Retrieve Clerk settings from the environment
@@ -30,15 +30,13 @@ const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
 const App = () => {
 
-  // console.log(config)
-
 
   useEffect(() => {
     if (window.Clerk?.user) {
 
       console.log(window.Clerk.user)
       let fullname = window.Clerk.user.firstName + window.Clerk.user.lastName
-      let username=fullname.toLowerCase();
+      let username = fullname.toLowerCase();
 
       db.collection(`users/data/${username}`).doc('info').set(
         {
@@ -47,7 +45,7 @@ const App = () => {
           photoURL: window.Clerk.user.profileImageUrl,
           userName: username,
           highlights: [],
-          lowlights:[],
+          lowlights: [],
         },
         { merge: true }
       )
@@ -76,16 +74,12 @@ const App = () => {
             <Route exact path="/signin" component={Signin} />
             <Route exact path="/signup" component={Signup} />
 
+            <PrivateRoute path="/dashboard" Comp={Dashboard} />
 
-            <PrivateRoute path="/dashboard" Comp={Dashboard}>
-
-            </PrivateRoute>
 
             {/* Catch-all route will render if no other route renders */}
             <Route>
-              <SignedIn>
 
-              </SignedIn>
               <SignedOut>
                 <div>You are signed out. You can access the public route.</div>
               </SignedOut>
@@ -98,9 +92,6 @@ const App = () => {
 
   );
 }
-
-
-
 
 
 export default App;

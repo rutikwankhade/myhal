@@ -15,18 +15,13 @@ const Dashboard = () => {
     const [title, setTitle] = useState('')
     const [details, setDetails] = useState('')
 
-
-
     const highlightsRef = db.collection(`users/data/${username}`)
     const data = useCollectionData(highlightsRef);
-
 
 
     useEffect(() => {
         console.log(bio)
         console.log(data)
-
-
     })
 
 
@@ -85,10 +80,9 @@ const Dashboard = () => {
     }
 
 
+
     return (
         <div className="p-10 flex md:flex-row flex-col justify-center">
-
-
 
             <div className=" rounded-lg p-4 pr-8 md:w-1/3">
                 <Link to={`/profile/${username}`}>
@@ -107,12 +101,10 @@ const Dashboard = () => {
                     Update bio
                 </button>
 
-
-
             </div>
 
-            <div className="md:w-1/2 bg-white flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 md:mx-20">
 
+            <div className="md:w-1/2 bg-white flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 md:mx-20">
 
                 <select
                     onChange={(e) => setLightType(e.target.value)}
@@ -121,7 +113,6 @@ const Dashboard = () => {
                     <option className="font-semibold text-lg" >Highlights</option>
                     <option className="font-semibold text-lg">Lowlights</option>
 
-
                 </select>
 
                 <input
@@ -129,6 +120,7 @@ const Dashboard = () => {
                     placeholder="// Title"
                     onChange={(e) => setTitle(e.target.value)}
                 />
+
                 <textarea
                     className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
                     placeholder="// Write more about it."
