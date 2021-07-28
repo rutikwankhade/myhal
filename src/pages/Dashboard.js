@@ -39,14 +39,14 @@ const Dashboard = () => {
 
 
     const addToProfile = () => {
-        console.log(title, details)
+        console.log(title, details, lightType)
 
-        
+
     }
 
 
     return (
-        <div className="p-10 flex flex-row justify-center">
+        <div className="p-10 flex md:flex-row flex-col justify-center">
 
 
 
@@ -71,7 +71,18 @@ const Dashboard = () => {
 
             </div>
 
-            <div className="w-1/2 bg-white flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 mx-20">
+            <div className="md:w-1/2 bg-white flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 md:mx-20">
+
+
+                <select
+                    onChange={(e) => setLightType(e.target.value)}
+                    className="block border-2 p-2 my-2  rounded-xl text-xl w-full bg-white text-pink-400 font-semibold focus:outline-none"
+                >
+                    <option className="font-semibold text-lg" >Highlights</option>
+                    <option className="font-semibold text-lg">Lowlights</option>
+
+
+                </select>
 
                 <input
                     className="w-full p-2 text-xl border-2 m-1  rounded-lg bg-gray-50 px-4"
