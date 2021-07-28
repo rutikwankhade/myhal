@@ -3,6 +3,7 @@ import EventCard from '../components/EventCard';
 import { db } from '../config/firebase'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router';
+import Lights from '../components/Lights'
 
 
 const Profile = () => {
@@ -12,6 +13,8 @@ const Profile = () => {
     const data = useCollectionData(userRef);
 
     const [user, setUser] = useState({})
+    const [lights, setLights] = useState('highlights')
+
 
 
     useEffect(() => {
@@ -34,8 +37,16 @@ const Profile = () => {
 
 
                 <div className="flex flex-row justify-center mt-2">
-                    <div className="w-1/2 h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">Highlights</div>
-                    <div className="w-1/2 h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">Lowlights</div>
+                    <div className="w-1/2 flex flex-col justify-center items-center h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
+                        <span className="text-4xl">✨</span>
+                        <span className="text-xl font-bold my-2">Highlights</span>
+                    </div>
+
+                    <div className="w-1/2 flex flex-col justify-center items-center h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
+                        <span className="text-4xl">🌊</span>
+                        <span className="text-xl font-bold my-2">Lowlights</span>
+                    </div>
+
 
                 </div>
 
@@ -43,27 +54,23 @@ const Profile = () => {
 
 
             <div className="bg-white rounded-xl w-8/12 mx-6 p-10 border-2 border-gray-600   ">
-
-                <div className="flex">
-                    <h1 className="text-4xl m-2 font-semibold">🏆 </h1>
-                    <div>
-                        <h1 className="text-2xl font-semibold">Highlights</h1>
-                        <p className="italic text-gray-400">Celebrating small wins</p>
-                    </div>
-                </div>
+                {
+                    (lights === 'highlights') ?
 
 
-                <div class="relative mt-10 mx-auto ">
-                    <div class="border-r-4 border-gray-300  absolute h-full top-0" style={{ left: 10 }}></div>
-                    <ul class="list-none m-0 p-0">
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
+                        <Lights
+                            list={user?.highlights}
+                            heading='Highlights'
+                            tagline='Celebrating small wins'
+                        /> :
 
-                    </ul>
-                </div>
+                        <Lights
+                            list={user?.lowlights}
+                            heading='Lowlights'
+                            tagline='Embracing the failures'
+
+                        />
+                }
             </div>
 
 
