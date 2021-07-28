@@ -2,21 +2,13 @@ import React, { useEffect } from 'react';
 import EventCard from '../components/EventCard';
 
 
-import { useUser } from '@clerk/clerk-react';
-
 const Profile = () => {
-    const { fullName, profileImageUrl } = useUser();
-
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <div className="bg-purple-300  p-10 flex flex-row">
             <div className="sticky top-20 bg-white text-center border-2 border-gray-600 w-1/4 rounded-xl p-10 flex flex-col h-full items-center">
-                <img src={profileImageUrl} alt="me" className="w-20 h-20 rounded-full" />
-                <h1 className="text-2xl font-bold py-2">{fullName}</h1>
+                {/* <img src={profileImageUrl} alt="me" className="w-20 h-20 rounded-full" /> */}
+                {/* <h1 className="text-2xl font-bold py-2">{}</h1> */}
                 <p className="text-gray-600 text-xl py-2">Avid learner, loves building products, reads a lot</p>
             </div>
 

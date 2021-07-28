@@ -1,4 +1,6 @@
 
+import firebase from "firebase";
+import "firebase/storage";
 
 export const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -8,5 +10,17 @@ export const config = {
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_API_ID
 };
+
+
+//initializing firebase
+ const myapp = !firebase.apps.length
+    ? firebase.initializeApp(config)
+    : firebase.app();
+
+const db = myapp.firestore();
+const storage = firebase.storage();
+
+export { db, storage }
+
 
 
