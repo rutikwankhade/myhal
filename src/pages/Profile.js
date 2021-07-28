@@ -37,12 +37,17 @@ const Profile = () => {
 
 
                 <div className="flex flex-row justify-center mt-2">
-                    <div className="w-1/2 flex flex-col justify-center items-center h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
+                    <div
+                        onClick={() => setLights('highlights')}
+                        className="w-1/2 cursor-pointer flex flex-col justify-center items-center h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
                         <span className="text-4xl">✨</span>
                         <span className="text-xl font-bold my-2">Highlights</span>
                     </div>
 
-                    <div className="w-1/2 flex flex-col justify-center items-center h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
+                    <div
+                        onClick={() => setLights('lowlights')}
+
+                        className="cursor-pointer w-1/2 flex flex-col justify-center items-center h-32 m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
                         <span className="text-4xl">🌊</span>
                         <span className="text-xl font-bold my-2">Lowlights</span>
                     </div>
