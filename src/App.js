@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import {
   ClerkProvider,
-  RedirectToSignIn,
   SignedIn,
   SignedOut,
-  useUser
 } from '@clerk/clerk-react';
 
 import {
@@ -12,6 +10,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+
 import { db, config } from "./config/firebase";
 import firebase from "firebase";
 
@@ -23,7 +22,7 @@ import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 // Retrieve Clerk settings from the environment
