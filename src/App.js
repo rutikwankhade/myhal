@@ -19,6 +19,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Welcome from './pages/Welcome'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
+import Signin from './pages/Signin'
 
 
 // Retrieve Clerk settings from the environment
@@ -41,6 +42,8 @@ const  App =() =>{
           <Switch>
             <Route exact path="/" component={Welcome} />
             <Route exact path="/profile/:username" component={Profile} />
+                        <Route exact path="/signin" component={Signin} />
+
 
 
 
