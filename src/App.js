@@ -12,7 +12,8 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-
+import { db } from "./config/firebase";
+import firebase from "firebase";
 
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
@@ -20,29 +21,59 @@ import Welcome from './pages/Welcome'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 // Retrieve Clerk settings from the environment
 const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
+const App = () => {
 
-const  App =() =>{
+  const listRef = db.collection(`test`)
+  console.log(listRef)
+    // const [list] = useCollectionData(listRef, { idField: "id" });
 
+  useEffect(() => {
+      console.log(window.Clerk)
+    if (window.Clerk?.user) {
+      db.collection("users")
+        .doc(window.Clerk.user.primaryEmailAddress.emailAddress)
+        .set(
+          {
+            email: window.Clerk.user.primaryEmailAddress.emailAddress,
+            name: window.Clerk.user.fullName,
+            lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+            photoURL: window.Clerk.user.profileImageUrl,
+            userName: window.Clerk.user.username,
+          },
+          { merge: true }
+        );
+    }
+
+  listRef.add({
+            title: "yeesss",
+           
+            // createdAt: firestore.FieldValue.serverTimestamp()
+
+        })
+
+
+  });
 
   return (
     <div>
 
       <ClerkProvider frontendApi={clerkFrontendApi}>
-        
-        
+
+
 
         <Router>
-                    <Navbar />
+          <Navbar />
 
           <Switch>
             <Route exact path="/" component={Welcome} />
             <Route exact path="/profile/:username" component={Profile} />
-                        <Route exact path="/signin" component={Signin} />
+            <Route exact path="/signin" component={Signin} />
 
 
 
