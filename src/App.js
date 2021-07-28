@@ -40,7 +40,7 @@ const App = () => {
       let fullname = window.Clerk.user.firstName + window.Clerk.user.lastName
       let username=fullname.toLowerCase();
 
-      db.collection(`users/${username}/info`).add(
+      db.collection(`users/data/${username}`).doc('info').set(
         {
           email: window.Clerk.user.primaryEmailAddress.emailAddress,
           name: window.Clerk.user.fullName,
@@ -57,7 +57,7 @@ const App = () => {
         });
     }
 
-  }, );
+  },);
 
 
   return (

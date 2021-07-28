@@ -9,7 +9,7 @@ const Profile = () => {
     const { username } = useParams()
 
 
-    const userRef = db.collection(`users/${username}/info`)
+    const userRef = db.collection(`users/data/${username}`)
     const data = useCollectionData(userRef);
 
 
@@ -19,6 +19,7 @@ const Profile = () => {
     useEffect(() => {
         if (data[0]) {
             setUser(data[0][0])
+            console.log(data)
 
         }
 
@@ -33,8 +34,8 @@ console.log()
             <div className="sticky top-20 h-auto w-1/4 flex flex-col">
                 <div className=" h-auto bg-white text-center border-2 border-gray-600  rounded-xl p-10 flex flex-col  items-center">
                     <img src={user?.photoURL} alt="me" className="w-20 h-20 rounded-full" />
-                    <h1 className="text-2xl font-bold py-2">{user?.name}</h1>
-                    <p className="text-gray-600 text-xl py-2">Avid learner, loves building products, reads a lot</p>
+                    <h1 className="text-2xl font-bold py-2">{user?.name || user?.userName}</h1>
+                    <p className="text-gray-600 text-xl py-2">{ user?.about}</p>
                 </div>
 
                
