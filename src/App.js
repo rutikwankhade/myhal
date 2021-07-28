@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {
   ClerkProvider,
-  SignedIn,
   SignedOut,
 } from '@clerk/clerk-react';
 

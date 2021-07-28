@@ -5,6 +5,8 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../config/firebase'
 import firebase from 'firebase'
 
+import copyIcon from '../assets/copy.svg'
+
 const Dashboard = () => {
 
     const { firstName, lastName } = useUser();
@@ -85,9 +87,14 @@ const Dashboard = () => {
         <div className="p-10 flex md:flex-row flex-col justify-center">
 
             <div className=" rounded-lg p-4 pr-8 md:w-1/3">
-                <Link to={`/profile/${username}`}>
-                    <h1 className="rounded-lg border-2 p-2 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</h1>
-                </Link>
+                <div className="flex flex-row items-center justify-center">
+                    <Link to={`/profile/${username}`}>
+                        <h1 className="rounded-lg w-auto border-2 p-2 px-16 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</h1>
+                    </Link>
+                    <img src={copyIcon} alt="copy" className="w-12 h-12 mx-2 cursor-pointer rounded-xl border-2 p-2 hover:bg-indigo-400 border-indigo-400" />
+
+                </div>
+
 
                 <textarea
                     className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"

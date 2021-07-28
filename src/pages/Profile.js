@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import EventCard from '../components/EventCard';
 import { db } from '../config/firebase'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router';
