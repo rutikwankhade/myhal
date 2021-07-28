@@ -12,7 +12,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import { db } from "./config/firebase";
+import { db, config } from "./config/firebase";
 import firebase from "firebase";
 
 import Navbar from './components/Navbar'
@@ -29,12 +29,10 @@ const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
 const App = () => {
 
-  const listRef = db.collection(`test`)
-  console.log(listRef)
-    // const [list] = useCollectionData(listRef, { idField: "id" });
+  console.log(config)
 
   useEffect(() => {
-      console.log(window.Clerk)
+    console.log(window.Clerk)
     if (window.Clerk?.user) {
       db.collection("users")
         .doc(window.Clerk.user.primaryEmailAddress.emailAddress)
@@ -50,12 +48,7 @@ const App = () => {
         );
     }
 
-  listRef.add({
-            title: "yeesss",
-           
-            // createdAt: firestore.FieldValue.serverTimestamp()
 
-        })
 
 
   });
@@ -65,8 +58,6 @@ const App = () => {
 
       <ClerkProvider frontendApi={clerkFrontendApi}>
 
-
-
         <Router>
           <Navbar />
 
@@ -74,9 +65,6 @@ const App = () => {
             <Route exact path="/" component={Welcome} />
             <Route exact path="/profile/:username" component={Profile} />
             <Route exact path="/signin" component={Signin} />
-
-
-
 
             <PrivateRoute path="/dashboard" Comp={Dashboard}>
 

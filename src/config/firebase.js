@@ -4,7 +4,7 @@ import "firebase/storage";
 import 'firebase/firestore'
 
 
-export const config = {
+ const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
@@ -14,7 +14,7 @@ export const config = {
 };
 
 
-//initializing firebase
+// //initializing firebase
 //  const app = !firebase.apps.length
 //     ? firebase.initializeApp(config)
 //     : firebase.app();
@@ -26,7 +26,7 @@ const storage = firebase.storage();
 
 
 
-export { db, storage }
+export { db, storage, config }
 
 
 
