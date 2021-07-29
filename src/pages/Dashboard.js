@@ -44,6 +44,12 @@ const Dashboard = () => {
 
     })
 
+    const copyLink = () => {
+        navigator.clipboard.writeText(`https://myhal.vercel.app/profile/${username}`)
+        toast.success('Copied!')
+
+    }
+
 
     const updateBio = () => {
         // console.log(bio, bgColor.hex)
@@ -116,15 +122,16 @@ const Dashboard = () => {
                         <Link to={`/profile/${username}`}>
                             <h1 className="rounded-lg w-auto border-2 p-2 px-16 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</h1>
                         </Link>
-                        <img src={copyIcon} alt="copy" className="w-12 h-12 mx-2 cursor-pointer rounded-xl border-2 p-2 hover:border-pink-300 border-indigo-400" />
 
+                        <button onClick={copyLink}>
+                            <img src={copyIcon} alt="copy" className="w-12 h-12 mx-2 cursor-pointer rounded-xl border-2 p-2 hover:border-pink-300 border-indigo-400" />
+                        </button>
                     </div>
 
                     <h1 className="text-xl font-semibold m-2 ">A short Bio</h1>
 
                     <textarea
                         defaultValue={data?.about}
-
                         className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
                         placeholder="Tell a little about yourself!"
                         onChange={(e) => setBio(e.target.value)}
@@ -135,6 +142,7 @@ const Dashboard = () => {
                 >
                     Update Bio
                 </button> */}
+
                     <h1 className="text-xl font-semibold m-2 ">Color Theme</h1>
                     <div className="flex m-2">
                         <TwitterPicker
@@ -154,9 +162,9 @@ const Dashboard = () => {
 
                 </div>
 
+
+
                 <div className="md:w-2/3 md:mx-20 flex flex-col">
-
-
 
 
                     <div className=" bg-white h-auto flex flex-col justify-center rounded-xl p-10  ">
@@ -189,8 +197,6 @@ const Dashboard = () => {
                             Add to my Profile
                         </button>
                     </div>
-
-
 
 
 
