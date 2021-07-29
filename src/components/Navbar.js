@@ -2,14 +2,14 @@ import React from 'react';
 import { UserButton, SignedIn, SignedOut } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom'
 
-import yinyangIcon from '../assets/yinyang.png'
+import waveIcon from '../assets/wave.png'
 const Navbar = () => {
 
     return (
         <div className="p-4 items-center md:px-24 flex flex-row bg-white  border-gray-200 border-b-2">
             <Link to="/dashboard" className="flex mx-2 items-center w-1/4 mr-auto ml-2">
-                <img src={yinyangIcon} alt="/" className="w-6 h-6 opacity-80"/>
-                <h1 className="font-inter font-extrabold text-3xl text-gray-600 mx-2">myhal</h1>
+                <img src={waveIcon} alt="/" className="w-8 opacity-80"/>
+                <h1 className="font-inter hover:text-pink-400 font-extrabold text-3xl text-gray-600 mx-2">myhal</h1>
             </Link>
 
             <SignedIn>
