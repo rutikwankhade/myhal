@@ -28,7 +28,7 @@ const Profile = () => {
     return (
         <div style={ {backgroundColor:user?.background}} className="bg-purple-400  p-10 flex md:flex-row flex-col justify-center">
             
-            <div className="md:w-1/4 ">
+            <div className="md:w-1/3 ">
                 <div className="md:sticky md:top-28">
                
                 <div className="bg-white text-center border-2 border-gray-600 rounded-xl p-10 flex flex-col items-center">
