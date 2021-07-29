@@ -9,7 +9,7 @@ import copyIcon from '../assets/copy.svg'
 import { TwitterPicker } from 'react-color'
 const Dashboard = () => {
 
-    const [data, setData] =useState({})
+    const [data, setData] = useState({})
 
     const { firstName, lastName } = useUser();
     let username = (firstName + lastName).toLowerCase()
@@ -17,7 +17,7 @@ const Dashboard = () => {
     // const data = useCollectionData(highlightsRef);
 
     const [bio, setBio] = useState('')
-    const [bgColor, setBgColor] = useState({hex:'#ffffff'})
+    const [bgColor, setBgColor] = useState({ hex: '#ffffff' })
     const [lightType, setLightType] = useState('Highlights')
     const [title, setTitle] = useState('')
     const [details, setDetails] = useState('')
@@ -33,12 +33,12 @@ const Dashboard = () => {
             }
         }).catch((error) => {
             console.log("Error getting document:", error);
-        });    
+        });
     }
 
     useEffect(() => {
-       
-        
+
+
     })
 
 
@@ -129,7 +129,7 @@ const Dashboard = () => {
                 <h1 className="text-xl font-semibold m-2 ">Color Theme</h1>
                 <div className="flex m-2">
                     <TwitterPicker
-                        colors={['#9999ff','#cc99ff', '#ffb3ff', '#ffd9b3','#66ffb3', '#ffb380', '#aa80ff']}
+                        colors={['#9999ff', '#cc99ff', '#ffb3ff', '#ffd9b3', '#66ffb3', '#ffb380', '#aa80ff']}
                         color={bgColor}
                         onChangeComplete={(color) => setBgColor(color)}
                     />
@@ -145,36 +145,58 @@ const Dashboard = () => {
 
             </div>
 
+            <div className="md:w-2/3 md:mx-20 flex flex-col">
 
-            <div className="md:w-1/2 bg-white h-full flex flex-col justify-center rounded-xl p-10  md:mx-20">
 
-                <select
-                    onChange={(e) => setLightType(e.target.value)}
-                    className="block border-2 p-2 my-2  rounded-xl text-xl w-full bg-white text-pink-400 font-semibold focus:outline-none"
-                >
-                    <option className="font-semibold text-lg" >Highlights</option>
-                    <option className="font-semibold text-lg">Lowlights</option>
 
-                </select>
 
-                <input
-                    className="w-full p-2 text-xl border-2 m-1 my-2 rounded-lg bg-gray-50 px-4"
-                    placeholder="// Title"
-                    onChange={(e) => setTitle(e.target.value)}
-                />
+                <div className=" bg-white h-auto flex flex-col justify-center rounded-xl p-10  ">
 
-                <textarea
-                    className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
-                    placeholder="// Write more about it."
-                    onChange={(e) => setDetails(e.target.value)}
-                />
+                    <select
+                        onChange={(e) => setLightType(e.target.value)}
+                        className="block border-2 p-2 my-2  rounded-xl text-xl w-full bg-white text-pink-400 font-semibold focus:outline-none"
+                    >
+                        <option className="font-semibold text-lg" >Highlights</option>
+                        <option className="font-semibold text-lg">Lowlights</option>
 
-                <button
-                    onClick={addToProfile}
-                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded-xl text-white w-auto mx-auto px-6 text-center"
-                >
-                    Add to my Profile
-                </button>
+                    </select>
+
+                    <input
+                        className="w-full p-2 text-xl border-2 m-1 my-2 rounded-lg bg-gray-50 px-4"
+                        placeholder="// Title"
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+
+                    <textarea
+                        className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
+                        placeholder="// Write more about it."
+                        onChange={(e) => setDetails(e.target.value)}
+                    />
+
+                    <button
+                        onClick={addToProfile}
+                        className="text-xl bg-gray-700 p-2 my-2 m-1 rounded-xl text-white w-auto mx-auto px-6 text-center"
+                    >
+                        Add to my Profile
+                    </button>
+                </div>
+
+
+
+
+
+                <div className="bg-white rounded-xl p-4 mt-2 flex  items-center justify-center">
+                    <h1 className="text-lg text-gray-400 italic font-semibold ">
+                        Let your friends know about your highs and lows.
+                    </h1>
+                    <a className="mx-auto twitter-share-button font-bold bg-indigo-400 ml-auto mr-2 hover:bg-indigo-500 text-white text-md px-4 p-2 rounded-md  "
+                        target="_blank" rel="noreferrer"
+                        href={`https://twitter.com/intent/tweet?text=Hey, I created my profile on myhal , sharing the highlights and lowlights of my journey. https://myhal.vercel.app/profile/${username}`}
+                        data-size="large">
+
+                        Share on Twitter</a>
+                </div>
+
             </div>
         </div>
     );
