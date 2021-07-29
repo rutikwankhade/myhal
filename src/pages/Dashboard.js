@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../config/firebase'
 import firebase from 'firebase'
 
@@ -12,11 +12,12 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Dashboard = () => {
 
-    const [data, setData] = useState({})
+    // const [data, setData] = useState({})
 
     const { firstName, lastName } = useUser();
     let username = (firstName + lastName).toLowerCase()
-    const highlightsRef = db.collection(`users/data/${username}`)
+
+    // const highlightsRef = db.collection(`users/data/${username}`)
     // const data = useCollectionData(highlightsRef);
 
     const [bio, setBio] = useState('')
@@ -26,23 +27,22 @@ const Dashboard = () => {
     const [details, setDetails] = useState('')
 
 
-    const getUserData = () => {
-        highlightsRef.doc('info').get().then((doc) => {
-            if (doc.exists) {
-                setData(data => doc.data())
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-    }
+    // const getUserData = () => {
+    //     highlightsRef.doc('info').get().then((doc) => {
+    //         if (doc.exists) {
+    //             setData(data => doc.data())
+    //         } else {
+    //             // doc.data() will be undefined in this case
+    //             console.log("No such document!");
+    //         }
+    //     }).catch((error) => {
+    //         console.log("Error getting document:", error);
+    //     });
+    // }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-
-    })
+    // })
 
     const copyLink = () => {
         navigator.clipboard.writeText(`https://myhal.vercel.app/profile/${username}`)
@@ -132,7 +132,7 @@ const Dashboard = () => {
                     <h1 className="text-xl font-semibold m-2 ">A short Bio</h1>
 
                     <textarea
-                        defaultValue={data?.about}
+                        // defaultValue={data?.about}
                         className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
                         placeholder="// Tell a little about yourself!"
                         onChange={(e) => setBio(e.target.value)}
