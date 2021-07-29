@@ -100,14 +100,14 @@ const Dashboard = () => {
 
 
     return (
-        <div className="p-10 flex md:flex-row flex-col justify-center">
+        <div className="p-10 flex md:flex-row flex-col justify-center bg-purple-100 mx-auto">
 
-            <div className=" rounded-lg p-4 pr-8 md:w-1/3">
+            <div className="bg-white rounded-lg p-4 pr-8 md:w-1/3">
                 <div className="flex flex-row items-center justify-center">
                     <Link to={`/profile/${username}`}>
                         <h1 className="rounded-lg w-auto border-2 p-2 px-16 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</h1>
                     </Link>
-                    <img src={copyIcon} alt="copy" className="w-12 h-12 mx-2 cursor-pointer rounded-xl border-2 p-2 hover:bg-indigo-400 border-indigo-400" />
+                    <img src={copyIcon} alt="copy" className="w-12 h-12 mx-2 cursor-pointer rounded-xl border-2 p-2 hover:border-pink-300 border-indigo-400" />
 
                 </div>
 
@@ -138,7 +138,7 @@ const Dashboard = () => {
 
                 <button
                     onClick={updateBio}
-                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded text-white w-full text-center"
+                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded-xl text-white w-full text-center"
                 >
                     Update
                 </button>
@@ -146,7 +146,7 @@ const Dashboard = () => {
             </div>
 
 
-            <div className="md:w-1/2 bg-white h-full flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 md:mx-20">
+            <div className="md:w-1/2 bg-white h-full flex flex-col justify-center rounded-xl p-10  md:mx-20">
 
                 <select
                     onChange={(e) => setLightType(e.target.value)}
@@ -158,7 +158,7 @@ const Dashboard = () => {
                 </select>
 
                 <input
-                    className="w-full p-2 text-xl border-2 m-1  rounded-lg bg-gray-50 px-4"
+                    className="w-full p-2 text-xl border-2 m-1 my-2 rounded-lg bg-gray-50 px-4"
                     placeholder="// Title"
                     onChange={(e) => setTitle(e.target.value)}
                 />
@@ -171,9 +171,9 @@ const Dashboard = () => {
 
                 <button
                     onClick={addToProfile}
-                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded text-white w-auto mx-auto px-6 text-center"
+                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded-xl text-white w-auto mx-auto px-6 text-center"
                 >
-                    Add to my profile
+                    Add to my Profile
                 </button>
             </div>
         </div>
