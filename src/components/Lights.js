@@ -1,14 +1,17 @@
 import React from 'react';
 import EventCard from '../components/EventCard'
+import waveIcon from '../assets/wave.png'
+
 const Lights = ({ list, heading, tagline , textColor}) => {
 
     console.log(list, )
     return (
         <div className="h-auto">
             <div className="flex ">
-                {/* <h1 className="text-4xl m-2 font-semibold">🏆 </h1> */}
-                <div className="mx-auto">
-                    <h1 className="text-2xl font-semibold text-center">{ heading}</h1>
+                <img src={waveIcon} alt="my" className="w-12 h-12 mx-4 opacity-80"/>
+
+                <div className="">
+                    <h1 className="text-2xl font-bold ">{ heading}</h1>
                     <p className="italic text-gray-400">{ tagline}</p>
                 </div>
             </div>
