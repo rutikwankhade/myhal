@@ -1,10 +1,10 @@
 import React from 'react';
 import EventCard from '../components/EventCard'
-const Lights = ({ list, heading, tagline }) => {
+const Lights = ({ list, heading, tagline , textColor}) => {
 
     console.log(list, )
     return (
-        <div>
+        <div className="h-auto">
             <div className="flex ">
                 {/* <h1 className="text-4xl m-2 font-semibold">🏆 </h1> */}
                 <div className="mx-auto">
@@ -19,7 +19,7 @@ const Lights = ({ list, heading, tagline }) => {
                 <ul class="list-none m-0 p-0">
 
                     {list && list.map(item => {
-                        return <EventCard item={item} />
+                        return <EventCard item={item} theme={textColor}/>
 
                     })}
 

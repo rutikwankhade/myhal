@@ -126,9 +126,10 @@ const Dashboard = () => {
                 >
                     Update Bio
                 </button> */}
-                <h1 className="text-xl font-semibold m-2 ">Background Color</h1>
-                <div className="flex">
+                <h1 className="text-xl font-semibold m-2 ">Color Theme</h1>
+                <div className="flex m-2">
                     <TwitterPicker
+                        colors={['#9999ff','#cc99ff', '#ffb3ff', '#ffd9b3','#66ffb3', '#ffb380', '#aa80ff']}
                         color={bgColor}
                         onChangeComplete={(color) => setBgColor(color)}
                     />
