@@ -26,7 +26,7 @@ const Profile = () => {
 
 
     return (
-        <div className="bg-purple-300  p-10 flex flex-row">
+        <div style={ {backgroundColor:user?.background}} className="bg-purple-300  p-10 flex flex-row">
             <div className="sticky top-20 h-auto w-1/4 flex flex-col">
                 <div className=" h-auto bg-white text-center border-2 border-gray-600  rounded-xl p-10 flex flex-col  items-center">
                     <img src={user?.photoURL} alt="me" className="w-20 h-20 rounded-full" />

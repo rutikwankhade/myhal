@@ -9,28 +9,44 @@ import copyIcon from '../assets/copy.svg'
 import { TwitterPicker } from 'react-color'
 const Dashboard = () => {
 
+    const [data, setData] =useState({})
+
     const { firstName, lastName } = useUser();
     let username = (firstName + lastName).toLowerCase()
+    const highlightsRef = db.collection(`users/data/${username}`)
+    // const data = useCollectionData(highlightsRef);
 
     const [bio, setBio] = useState('')
+    const [bgColor, setBgColor] = useState({hex:'#ffffff'})
     const [lightType, setLightType] = useState('Highlights')
     const [title, setTitle] = useState('')
     const [details, setDetails] = useState('')
 
-    const highlightsRef = db.collection(`users/data/${username}`)
-    const data = useCollectionData(highlightsRef);
 
+    const getUserData = () => {
+        highlightsRef.doc('info').get().then((doc) => {
+            if (doc.exists) {
+                setData(data => doc.data())
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });    
+    }
 
     useEffect(() => {
-        console.log(bio)
-        console.log(data)
+       
+        
     })
 
 
     const updateBio = () => {
-        console.log(bio)
+        console.log(bio, bgColor.hex)
         db.collection(`users/data/${username}`).doc('info').update({
-            about: bio
+            about: bio,
+            background: bgColor.hex
         })
             .then(() => {
                 console.log("Document successfully updated!");
@@ -98,6 +114,8 @@ const Dashboard = () => {
                 <h1 className="text-xl font-semibold m-2 ">A short Bio</h1>
 
                 <textarea
+                    defaultValue={data?.about}
+
                     className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
                     placeholder="Tell a little about yourself!"
                     onChange={(e) => setBio(e.target.value)}
@@ -110,8 +128,11 @@ const Dashboard = () => {
                 </button> */}
                 <h1 className="text-xl font-semibold m-2 ">Background Color</h1>
                 <div className="flex">
-                    <TwitterPicker />
-                    <span className="w-12 h-12 m-auto border-2 border-gray-700 bg-purple-400 mx-4 rounded"></span>
+                    <TwitterPicker
+                        color={bgColor}
+                        onChangeComplete={(color) => setBgColor(color)}
+                    />
+                    <span style={{ backgroundColor: bgColor?.hex }} className="w-12 h-12 m-auto border-2 border-gray-700  mx-4 rounded"></span>
                 </div>
 
                 <button
