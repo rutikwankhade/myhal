@@ -6,7 +6,7 @@ import { db } from '../config/firebase'
 import firebase from 'firebase'
 
 import copyIcon from '../assets/copy.svg'
-
+import { TwitterPicker } from 'react-color'
 const Dashboard = () => {
 
     const { firstName, lastName } = useUser();
@@ -95,23 +95,36 @@ const Dashboard = () => {
 
                 </div>
 
+                <h1 className="text-xl font-semibold m-2 ">A short Bio</h1>
 
                 <textarea
                     className="w-full p-2 text-xl border-2 m-1 h-40 rounded-lg bg-gray-50 px-4"
                     placeholder="Tell a little about yourself!"
                     onChange={(e) => setBio(e.target.value)}
                 />
+                {/* <button
+                    onClick={updateBio}
+                    className="text-xl bg-gray-700 p-2 my-2 m-1 rounded text-white w-full text-center"
+                >
+                    Update Bio
+                </button> */}
+                <h1 className="text-xl font-semibold m-2 ">Background Color</h1>
+                <div className="flex">
+                    <TwitterPicker />
+                    <span className="w-12 h-12 m-auto border-2 border-gray-700 bg-purple-400 mx-4 rounded"></span>
+                </div>
+
                 <button
                     onClick={updateBio}
                     className="text-xl bg-gray-700 p-2 my-2 m-1 rounded text-white w-full text-center"
                 >
-                    Update bio
+                    Update
                 </button>
 
             </div>
 
 
-            <div className="md:w-1/2 bg-white flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 md:mx-20">
+            <div className="md:w-1/2 bg-white h-full flex flex-col justify-center rounded-xl p-10 border-2 border-gray-200 md:mx-20">
 
                 <select
                     onChange={(e) => setLightType(e.target.value)}
