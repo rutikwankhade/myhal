@@ -117,11 +117,11 @@ const Dashboard = () => {
 
             <div className="md:px-10 flex md:flex-row flex-col justify-center bg-purple-100 mx-auto">
 
-                <div className="m-10 bg-white rounded-lg p-4 pr-8 md:w-1/3">
+                <div className="md:m-10 m-4 bg-white rounded-lg p-4 pr-8 md:w-1/3">
                     <div className="flex flex-row items-center justify-center">
-                        
+
                         <Link to={`/profile/${username}`} target="_blank" rel="noreferrer">
-                            <button className=" duration-200 ease-in-out rounded-lg w-auto border-2 p-2 px-16 text-center text-2xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</button>
+                            <button className=" duration-200 ease-in-out rounded-lg w-auto border-2 p-2 md:px-16 px-8 text-center md:text-2xl text-xl font-bold border-indigo-400 my-4 hover:bg-indigo-400 hover:text-white bg-white">Visit My Page</button>
                         </Link>
 
                         <button onClick={copyLink}>
@@ -165,7 +165,7 @@ const Dashboard = () => {
 
 
 
-                <div className="md:w-2/3 md:m-10 flex flex-col">
+                <div className="md:w-2/3 md:m-10 m-4 flex flex-col">
 
 
                     <div className=" bg-white h-auto flex flex-col justify-center rounded-xl p-10  ">
