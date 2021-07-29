@@ -6,7 +6,7 @@ import waveIcon from '../assets/wave.png'
 const Navbar = () => {
 
     return (
-        <div className="p-4 items-center md:px-24 flex flex-row bg-white  border-gray-200 border-b-2">
+        <div className="p-4 items-center md:px-24 flex flex-row bg-white  border-gray-200 shadow-md">
             <Link to="/dashboard" className="flex mx-2 items-center w-1/4 mr-auto ml-2">
                 <img src={waveIcon} alt="/" className="w-8 opacity-80"/>
                 <h1 className="font-inter hover:text-pink-400 font-extrabold text-3xl text-gray-600 mx-2">myhal</h1>
