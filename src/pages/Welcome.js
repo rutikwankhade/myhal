@@ -1,12 +1,16 @@
 import React from 'react';
 import readingImg from '../assets/hero1.png'
+import hero2 from '../assets/Saly-18.png'
+
+import demoImg from '../assets/demo.png'
+
 import { Link } from 'react-router-dom'
 
 const Welcome = () => {
     return (
         <div className=" bg-purple-100">
             <div className="p-4   flex flex-row justify-center">
-                <div className="mt-20 px-4 ml-10">
+                <div className="mt-28 px-4 ml-10">
                     <h1 className="leading-loose mx-4 my-8  text-4xl font-bold font-inter text-gray-600  ">Celebrate your small <span className="text-indigo-400">wins</span><br /> and embrace <span className=" text-indigo-400">failures</span>.</h1>
                     <Link to="/signup">
                         <button className=" bg-gray-700 hover:bg-indigo-500 border-white border-2 text-white transform hover:scale-105 duration-300 ease-in-out rounded-lg p-2 px-6 text-2xl  ml-4 font-semibold">Get Started</button>
@@ -15,8 +19,44 @@ const Welcome = () => {
 
                 <img src={readingImg} alt="illustration" className="w-6/12 " />
             </div>
+            <img src={demoImg} alt="illustration" className="w-10/12 mx-auto transform -translate-y-60 " />
 
-            <div className="bg-gray-50 p-40">jj</div>
+
+
+
+            <div className="flex ">
+                <img src={hero2} alt="illustration" className="w-6/12 " />
+                <div className="font-inter rounded-xl w-1/2 mx-auto transform -translate-y-40">
+
+                    <h1 className="text-4xl py-4 font-bold text-gray-700">How does it work?</h1>
+
+                    <div className="flex my-2">
+                        <div className="transform hover:scale-105 duration-300 ease-in-out w-20 h-20 cursor-pointer flex flex-col justify-center items-center  m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
+                            <span className="text-4xl">✨</span>
+                        </div>
+
+                        <p className="w-1/2 m-2 text-xl text-gray-700 font-semibold"><span className="text-indigo-400 font-bold">Highlights </span>is the list of small wins that you are proud of throughout your journey. Celebrate them. </p>
+                    </div>
+
+                    <div className="flex my-2">
+                        <div className="transform hover:scale-105 duration-300 ease-in-out w-20 h-20 cursor-pointer flex flex-col justify-center items-center  m-2 bg-white rounded-xl border-2 border-gray-600 p-4">
+                            <span className="text-4xl">🌊</span>
+                        </div>
+
+                        <p className="w-1/2 m-2 text-xl text-gray-700 font-semibold"><span className="text-pink-400 font-bold">Lowlights </span>is the list of moments when you failed, learned and grew up. Embrace them.</p>
+                    </div>
+
+
+                    <h1 className="text-3xl mt-20 py-4 font-bold text-gray-700">Why create one?</h1>
+                    <p className="w-2/3 m-2 text-2xl text-gray-700 font-semibold">Documenting and sharing your highs and lows will work as a motivation to keep going. And help you see your progress.</p>
+                    <Link to="/signup">
+                        <button className=" bg-indigo-400 hover:bg-indigo-500 border-white border-2 text-white transform hover:scale-105 duration-300 ease-in-out rounded-lg p-2 px-6 text-2xl  my-4 font-semibold">Let's do this.</button>
+                    </Link>
+
+                </div>
+            </div>
+
+            {/* <div className="bg-gray-50 p-40 transform -translate-y-80 w-1/2 ml-auto mr-20">jj</div> */}
 
             <footer className="text-center bg-white p-6 ">
                 <span className="text-gray-400">
