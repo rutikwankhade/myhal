@@ -20,6 +20,8 @@ import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
+import ManageAccount from './pages/ManageAccount'
+
 
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
 
@@ -56,7 +58,7 @@ const App = () => {
         });
     }
 
-  },[]);
+  }, []);
 
 
   return (
@@ -74,6 +76,8 @@ const App = () => {
             <Route exact path="/signup" component={Signup} />
 
             <PrivateRoute path="/dashboard" Comp={Dashboard} />
+            <PrivateRoute path="/manage-account" Comp={ManageAccount} />
+
 
 
             {/* Catch-all route will render if no other route renders */}
