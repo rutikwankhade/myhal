@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import {
+  RedirectToSignIn,
   ClerkProvider,
   SignedOut,
 } from '@clerk/clerk-react';
@@ -84,7 +85,7 @@ if (window.Clerk?.user) {
             <Route>
 
               <SignedOut>
-                <div>You are signed out. You can access the public route.</div>
+                <RedirectToSignIn/>
               </SignedOut>
             </Route>
           </Switch>

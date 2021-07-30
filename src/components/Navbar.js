@@ -13,6 +13,9 @@ const Navbar = () => {
             </Link>
 
             <SignedIn>
+                <Link to="/dashboard" className="flex mx-2 items-center  ml-auto mr-4">
+                <h1 className="font-inter hover:text-pink-400 font-bold text-xl text-gray-600 mx-2">Dashboard</h1>
+            </Link>
                 <UserButton />
             </SignedIn>
             <SignedOut>
