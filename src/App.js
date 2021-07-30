@@ -33,9 +33,10 @@ const App = () => {
 
 
   useEffect(() => {
-    if (window.Clerk?.user) {
 
-      console.log(window.Clerk.user)
+if (window.Clerk?.user) {
+
+      // console.log(window.Clerk.user)
       let fullname = window.Clerk.user.firstName + window.Clerk.user.lastName
       let username = fullname.toLowerCase();
 
@@ -57,8 +58,7 @@ const App = () => {
           console.error("Error writing document: ", error);
         });
     }
-
-  }, []);
+  });
 
 
   return (
